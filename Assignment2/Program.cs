@@ -10,8 +10,67 @@ namespace Assignment2
         static void Main(string[] args)
         {
             SetUp();
+            SecurityCheck();
+            Menu();
+        }
 
-            Console.WriteLine("Välkommen till basgrupp3:s register \nDu har följande val: \n1. Lista ut alla medlemar i gruppen ");
+        private static void SecurityCheck()
+        {
+            int chance = 1;
+            const string pswd = "coffeencode";
+
+            do
+            {
+                Console.WriteLine("\nVälkommen till basgrupp3:s register");
+                Console.Write("Var god och mata in lösenord: ");
+                string userInput = Console.ReadLine();
+
+                if (userInput != pswd)
+                {
+                    Console.Beep();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nOgiltigt lösenord, var god försöka igen!");
+                    int chanceLeft = 3 - chance;
+                    Console.WriteLine($"Du har {chanceLeft} försök kvar");
+                    chance++;
+                }
+                else
+                {
+                    chance = 4;
+                }
+            }
+            while (chance < 4);
+        }
+
+        static void Menu()
+        {
+            int choice = 0;
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("**************************************************************");
+            Console.WriteLine("*              Basgrupp3 aka coffee'n'code                   *");
+            Console.WriteLine("*   Du har följande val:                                     *");
+            Console.WriteLine("*   1. Lista ut alla medlemar i gruppen                      *");
+            Console.WriteLine("*   2. Få ut mer dateljerade informationer om enskild medlem *");
+            Console.WriteLine("*   3. Ta bort en medlem                                     *");
+            Console.WriteLine("*   4. Avsluta                                               *");
+            Console.WriteLine("**************************************************************");
+
+            choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+
+            }
         }
 
         static void SetUp()
@@ -50,10 +109,10 @@ namespace Assignment2
                                                           "Träning och bakning", "Alla typer av pastarätter", "Lugna och klassisk musik"));
 
             
-            foreach(BaseGroupMember member in listOfMembers)
-            {
-                Console.WriteLine(member.FirstName);
-            }
+            //foreach(BaseGroupMember member in listOfMembers)
+            //{
+            //    Console.WriteLine(member.FirstName);
+            //}
 
         }
 
