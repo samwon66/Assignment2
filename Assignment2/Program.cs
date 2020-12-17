@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment2.Apprentice;
+using System;
 using System.Collections.Generic;
 
 namespace Assignment2
@@ -16,47 +17,15 @@ namespace Assignment2
 
         }
 
-        public static void SecurityCheck()
-        {
-            //int chance = 1;
-            string password = "coffeencode";
-
-
-            for (int i = 1; i < 4; i++)
-            {
-                Console.WriteLine("\nVälkommen till basgrupp3:s register");
-                Console.Write("Var god och mata in lösenord: ");
-                string userInput = Console.ReadLine();
-
-                if (userInput != password)
-                {
-                    Console.Beep();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nOgiltigt lösenord, var god försöka igen!");
-                    //int chanceLeft = 3 - chance;
-                    Console.WriteLine($"Du har {3 - i} försök kvar");
-                    //chance++;
-                }
-                else if (userInput == password)
-                {
-                    Menu();
-                }
-
-
-            }
-            //while (chance < 4);
-
-        }
 
         static void Menu()
         {
             int choice = 0;
             bool keepGoing = true;
 
-            do
+           while (keepGoing)
             {
-
-                Console.Clear();
+                Console.Title = "Coffee'N'Code medlemsregister";
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
                 Console.WriteLine("*              Basgrupp3 aka coffee'n'code                   *");
@@ -67,20 +36,22 @@ namespace Assignment2
                 Console.WriteLine("*   4. Avsluta                                               *");
                 Console.WriteLine(" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
 
+                
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
                 {
                     case 1:
-                        foreach (BaseGroupMember member in listOfMembers)
-                        {
-                            Console.Write(member.Age);
-                        }
+                        Console.Clear();
+                        ShowAllMembers();
                         break;
                     case 2:
-
+                        Console.Clear();
+                        ShowAllMembers();
                         break;
                     case 3:
+                        Console.Clear();
+                        ShowAllMembers();
                         Console.WriteLine("Välj en medlem som du vill ta bort från registern.");
 
                         break;
@@ -90,14 +61,27 @@ namespace Assignment2
                         break;
 
                 }
+
             }
-            while (keepGoing);
+
+            
+        }
+
+        static void ShowAllMembers()
+        {
+            int counter = 1;
+            foreach (BaseGroupMember member in listOfMembers)
+            {
+                Console.WriteLine($"{counter} {member.CallName}");
+                counter++;
+            }
         }
 
         static void RegBaseGroupMembers(BaseGroup b)
         {
 
-            listOfMembers.Add(new BaseGroupMember("Mikael Alexander",
+            listOfMembers.Add(new BaseGroupMember("Mikael",
+                                                  "Mikael Alexander",
                                                   "Larsson",
                                                   "Vänersborg",
                                                   "36",
@@ -110,7 +94,8 @@ namespace Assignment2
                                                   "Elektroniskt, allt mellan amibent och techno",
                                                   "Största driv till programmering: Har alltid tyckt det är intressant hur system är uppbyggda och hur de skapas, så nu vill jag kunna göra det själv"));
 
-            listOfMembers.Add(new BaseGroupMember("Karin Madeleine",
+            listOfMembers.Add(new BaseGroupMember("Madeleine",
+                                                  "Karin Madeleine",
                                                   "Karlsson",
                                                   "Stockholm",
                                                   "35",
@@ -123,7 +108,8 @@ namespace Assignment2
                                                   "Just nu, allt som inte är barnvisor",
                                                   "Har alltid tyckt det är intressant hur system är uppbyggda och hur de skapas, så nu vill jag kunna göra det själv"));
 
-            listOfMembers.Add(new BaseGroupMember("Sammy On Tat",
+            listOfMembers.Add(new BaseGroupMember("Sammy",
+                                                  "Sammy On Tat",
                                                   "Wong",
                                                   "Åmål",
                                                   "54",
@@ -136,7 +122,8 @@ namespace Assignment2
                                                   "Soul, RnB, House",
                                                   "Att kunna skapa någonting själv, problemlösning och tillfredsställelse när man har löst ett problem."));
 
-            listOfMembers.Add(new BaseGroupMember("David Josef",
+            listOfMembers.Add(new BaseGroupMember("David",
+                                                  "David Josef",
                                                   "Frödin",
                                                   "Sundbyberg",
                                                   "25",
@@ -150,6 +137,7 @@ namespace Assignment2
                                                   "Det är ballt och jag får kombinera kreativitet, problemlösning och människoperspektiv i en trevlig mix."));
 
             listOfMembers.Add(new BaseGroupMember("Rauf",
+                                                  "Rauf",
                                                   "Karimli",
                                                   "Göteborg",
                                                   "36",
@@ -163,6 +151,7 @@ namespace Assignment2
                                                   "De gränslösa möjligheterna att utveckla och utvecklas"));
 
             listOfMembers.Add(new BaseGroupMember("Erik",
+                                                  "Erik",
                                                   "Rindlert",
                                                   "Stockholm",
                                                   "31",
@@ -175,7 +164,8 @@ namespace Assignment2
                                                   "Schubert eller Darkthrone, beroende på dag",
                                                   "Bygga, bygga, bygga"));
 
-            listOfMembers.Add(new BaseGroupMember("Daniel Jacob",
+            listOfMembers.Add(new BaseGroupMember("Daniel",
+                                                  "Daniel Jacob",
                                                   "Arlbring",
                                                   "Alingsås",
                                                   "24",
@@ -189,6 +179,7 @@ namespace Assignment2
                                                   "Problemlösning"));
 
             listOfMembers.Add(new BaseGroupMember("Svante",
+                                                  "Svante",
                                                   "Joelsson",
                                                   "Strömstad",
                                                   "36",
@@ -202,6 +193,7 @@ namespace Assignment2
                                                   "Kul combo av problemlösning och kreativitet, och att en dag landa ett jobb med mer frihet"));
 
             listOfMembers.Add(new BaseGroupMember("Sarah",
+                                                  "Sarah",
                                                   "Winroth",
                                                   "Vara",
                                                   "31",
@@ -215,6 +207,7 @@ namespace Assignment2
                                                   "Själva problemlösningen och tillfredsställelsen efteråt!"));
 
             listOfMembers.Add(new BaseGroupMember("Farzane",
+                                                  "Farzane",
                                                   "Zafarzade",
                                                   "Karlstad",
                                                   "32",
@@ -228,22 +221,46 @@ namespace Assignment2
                                                   "Problemlösning, inom att lösa problem man lär sig att bli mer tålmodig och kreativ."));
 
 
-            for (int i = 0; i < listOfMembers.Count; i++)
-            {
-                Console.WriteLine(string.Join(',', listOfMembers[i].FirstName));
-            }
+            
 
 
 
         }
 
+        public static void SecurityCheck(string password)
+        {
+            Console.Title = "Basgrupp3 inloggning";
+            
+            for (int i = 1; i < 4; i++)
+            {
+                Console.WriteLine("\nVälkommen till basgrupp3:s register");
+                Console.Write("Var god och mata in lösenord: ");
+                string userInput = Console.ReadLine();
+
+                if (userInput == password)
+                {
+                    Console.Clear();
+                    Menu();
+                }
+                else 
+                {
+                    Console.Beep();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nOgiltigt lösenord, var god försöka igen!");
+                    Console.WriteLine($"Du har {3 - i} försök kvar");
+                    
+                }
+
+            }
+            
+        }
+
         static void SetUp()
         {
-            BaseGroup basGrupp3 = new BaseGroup("coffencode", 10);
+            BaseGroup basGrupp3 = new BaseGroup("coffeencode", 10);
             basGrupp3.Password = basGrupp3.Name;
             RegBaseGroupMembers(basGrupp3);
-
-            SecurityCheck();
+            SecurityCheck(basGrupp3.Password);
 
 
         }
