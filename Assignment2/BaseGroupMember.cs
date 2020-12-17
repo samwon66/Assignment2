@@ -17,10 +17,11 @@ namespace Assignment2
         private string hobby;
         private string favFood;
         private string favMusic;
+        private string motivProg;
 
         public BaseGroupMember() { }
 
-        public BaseGroupMember(string firstName, string lastName, string city, string age, string accommodation, string family, string pet, string prevProfession, string hobby, string favFood, string favMusic)
+        public BaseGroupMember(string firstName, string lastName, string city, string age, string accommodation, string family, string pet, string prevProfession, string hobby, string favFood, string favMusic, string motivProg)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -33,7 +34,39 @@ namespace Assignment2
             this.hobby = hobby;
             this.favFood = favFood;
             this.favMusic = favMusic;
+            this.motivProg = motivProg;
         }
+
+        public List<string> MemNameList()
+        {
+            List<string> membNameList = new List<string>();
+            membNameList.Add(firstName);
+            return membNameList;
+
+        }
+
+        public string Describe()
+        {
+            return $"Förnamn: {FirstName}\n" +
+                   $"Efternamn: {LastName}\n" +
+                   $"Stad: {City}\n" +
+                   $"Ålder: {Age}\n" +
+                   $"Boende: {Accommodation}\n" +
+                   $"Familj: {Family}\n" +
+                   $"Husdjur {Pet}\n" +
+                   $"Senast yrke: {PrevProfession}\n" +
+                   $"Hobby: {Hobby}\n" +
+                   $"Favorit mat: {FavFood}\n" +
+                   $"Favorit musik: {FavMusic}\n" +
+                   $"Driv till programmering: {MotivProg}";
+
+        }
+
+        public override string ToString()
+        {
+            return $"{firstName} {lastName}";
+        }
+
 
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
@@ -46,5 +79,6 @@ namespace Assignment2
         public string Hobby { get => hobby; set => hobby = value; }
         public string FavFood { get => favFood; set => favFood = value; }
         public string FavMusic { get => favMusic; set => favMusic = value; }
+        public string MotivProg { get => motivProg; set => motivProg = value; }
     }
 }

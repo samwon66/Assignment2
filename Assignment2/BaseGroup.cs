@@ -8,6 +8,7 @@ namespace Assignment2
     {
         private string name;
         private int amountOfMembers;
+        private string password;
 
         public BaseGroup() { }
         
@@ -19,6 +20,7 @@ namespace Assignment2
 
         public string Name { get => name; set => name = value; }
         public int AmountOfMembers { get => amountOfMembers; set => amountOfMembers = value; }
+        public string Password { get => password; set => password = value; }
 
         public override string ToString()
         {
