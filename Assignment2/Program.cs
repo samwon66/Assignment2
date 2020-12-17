@@ -6,75 +6,142 @@ namespace Assignment2
 {
     class Program
     {
-        static List<BaseGroupMember> listOfMembers = new List<BaseGroupMember>();
+        private static List<BaseGroupMember> listOfMembers = new List<BaseGroupMember>();
 
         static void Main(string[] args)
         {
             SetUp();
-
-            //SecurityCheck();
-
-
         }
 
 
-        static void Menu()
+        private static void Menu()
         {
             int choice = 0;
             bool keepGoing = true;
 
-           while (keepGoing)
+            while (keepGoing)
             {
                 Console.Title = "Coffee'N'Code medlemsregister";
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
+                Console.WriteLine("\n  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
                 Console.WriteLine("*              Basgrupp3 aka coffee'n'code                   *");
                 Console.WriteLine("*   Du har följande val:                                     *");
-                Console.WriteLine("*   1. Lista ut alla medlemar i gruppen                      *");
+                Console.WriteLine("*   1. Lista ut alla medlemmar i gruppen                     *");
                 Console.WriteLine("*   2. Få ut mer dateljerade informationer om enskild medlem *");
                 Console.WriteLine("*   3. Ta bort en medlem                                     *");
                 Console.WriteLine("*   4. Avsluta                                               *");
-                Console.WriteLine(" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+                Console.WriteLine(" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  ");
 
-                
                 choice = Convert.ToInt32(Console.ReadLine());
-
+                int nr;
                 switch (choice)
                 {
                     case 1:
                         Console.Clear();
+                        Console.WriteLine("");
                         ShowAllMembers();
                         break;
                     case 2:
                         Console.Clear();
+                        Console.WriteLine("");
                         ShowAllMembers();
+                        Console.WriteLine("\nVälj en medlem som du vill titta närmare på.");
+                        nr = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine(listOfMembers[nr - 1].Describe());
                         break;
                     case 3:
+                        bool loop = true;
                         Console.Clear();
-                        ShowAllMembers();
-                        Console.WriteLine("Välj en medlem som du vill ta bort från registern.");
-
+                        do
+                        {
+                            Console.WriteLine("");
+                            ShowAllMembers();
+                            Console.WriteLine("\nVälj en medlem som du vill ta bort från registern.");
+                            nr = Convert.ToInt32(Console.ReadLine());
+                            try
+                            {
+                                Console.WriteLine($"Du vill ta bort {listOfMembers[nr - 1].CallName}? j/n");
+                                char answer = Convert.ToChar(Console.ReadLine());
+                                if (answer == 'j')
+                                {
+                                    Console.WriteLine($"{listOfMembers[nr - 1].CallName} är borttagen");
+                                    listOfMembers.Remove(listOfMembers[nr - 1]);
+                                    loop = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Återgå till huvudmenyn.\n");
+                                    loop = false;
+                                    
+                                }
+                                
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Du har angett ett ogiltigt svar!");
+                            }
+                        }
+                        while (loop);
                         break;
                     case 4:
+                        Console.WriteLine("");
                         Console.WriteLine("Tack för besöket, adjö!");
                         keepGoing = false;
                         break;
-
+                    default:
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Du har angett ett ogiltigt nummer! Var god försöka igen!\n");
+                        break;
                 }
-
             }
 
-            
         }
 
-        static void ShowAllMembers()
+        private static void ShowAllMembers()
         {
             int counter = 1;
             foreach (BaseGroupMember member in listOfMembers)
             {
-                Console.WriteLine($"{counter} {member.CallName}");
+                Console.WriteLine($"{counter}. {member.CallName}");
                 counter++;
             }
+        }
+
+        //Metoden för att kolla om lösenord stämma innan man blir insläppt.
+        private static void SecurityCheck(string password)
+        {
+            Console.Title = "Basgrupp3 inloggning";
+
+            for (int i = 1; i < 4; i++)
+            {
+                Console.WriteLine("\nVälkommen till basgrupp3:s register");
+                Console.Write("Var god och mata in lösenord: ");
+                string userInput = Console.ReadLine();
+
+                if (userInput == password)
+                {
+                    Console.Clear();
+                    Menu();
+                    break;
+                }
+                else
+                {
+                    Console.Beep();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nOgiltigt lösenord, var god försöka igen!");
+                    Console.WriteLine($"Du har {3 - i} försök kvar");
+                }
+            }
+
+        }
+
+        private static void SetUp()
+        {
+            BaseGroup basGrupp3 = new BaseGroup("coffeencode", 10);
+            basGrupp3.Password = basGrupp3.Name;
+            RegBaseGroupMembers(basGrupp3);
+            SecurityCheck(basGrupp3.Password);
         }
 
         static void RegBaseGroupMembers(BaseGroup b)
@@ -219,50 +286,6 @@ namespace Assignment2
                                                   "Alla typer av pastarätter",
                                                   "Lugna och klassisk musik",
                                                   "Problemlösning, inom att lösa problem man lär sig att bli mer tålmodig och kreativ."));
-
-
-            
-
-
-
-        }
-
-        public static void SecurityCheck(string password)
-        {
-            Console.Title = "Basgrupp3 inloggning";
-            
-            for (int i = 1; i < 4; i++)
-            {
-                Console.WriteLine("\nVälkommen till basgrupp3:s register");
-                Console.Write("Var god och mata in lösenord: ");
-                string userInput = Console.ReadLine();
-
-                if (userInput == password)
-                {
-                    Console.Clear();
-                    Menu();
-                }
-                else 
-                {
-                    Console.Beep();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nOgiltigt lösenord, var god försöka igen!");
-                    Console.WriteLine($"Du har {3 - i} försök kvar");
-                    
-                }
-
-            }
-            
-        }
-
-        static void SetUp()
-        {
-            BaseGroup basGrupp3 = new BaseGroup("coffeencode", 10);
-            basGrupp3.Password = basGrupp3.Name;
-            RegBaseGroupMembers(basGrupp3);
-            SecurityCheck(basGrupp3.Password);
-
-
         }
 
     }
