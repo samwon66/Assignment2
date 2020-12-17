@@ -23,14 +23,14 @@ namespace Assignment2
             {
                 Console.Title = "Coffee'N'Code medlemsregister";
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\n  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
-                Console.WriteLine("*              Basgrupp3 aka coffee'n'code                   *");
-                Console.WriteLine("*   Du har följande val:                                     *");
-                Console.WriteLine("*   1. Lista ut alla medlemmar i gruppen                     *");
-                Console.WriteLine("*   2. Få ut mer dateljerade informationer om enskild medlem *");
-                Console.WriteLine("*   3. Ta bort en medlem                                     *");
-                Console.WriteLine("*   4. Avsluta                                               *");
-                Console.WriteLine(" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  ");
+                Console.WriteLine("\n  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
+                Console.WriteLine("*              Basgrupp3 aka coffee'n'code                       *");
+                Console.WriteLine("*   Du har följande val:                                         *");
+                Console.WriteLine("*   1. Lista ut alla medlemmar i gruppen                         *");
+                Console.WriteLine("*   2. Få ut mer detaljerade informationer om enskilda medlemen  *");
+                Console.WriteLine("*   3. Ta bort en medlem                                         *");
+                Console.WriteLine("*   4. Avsluta                                                   *");
+                Console.WriteLine(" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  ");
 
                 choice = Convert.ToInt32(Console.ReadLine());
                 int nr;
@@ -72,7 +72,6 @@ namespace Assignment2
                                 {
                                     Console.WriteLine("Återgå till huvudmenyn.\n");
                                     loop = false;
-                                    
                                 }
                                 
                             }
@@ -108,40 +107,20 @@ namespace Assignment2
             }
         }
 
-        //Metoden för att kolla om lösenord stämma innan man blir insläppt.
-        private static void SecurityCheck(string password)
-        {
-            Console.Title = "Basgrupp3 inloggning";
-
-            for (int i = 1; i < 4; i++)
-            {
-                Console.WriteLine("\nVälkommen till basgrupp3:s register");
-                Console.Write("Var god och mata in lösenord: ");
-                string userInput = Console.ReadLine();
-
-                if (userInput == password)
-                {
-                    Console.Clear();
-                    Menu();
-                    break;
-                }
-                else
-                {
-                    Console.Beep();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nOgiltigt lösenord, var god försöka igen!");
-                    Console.WriteLine($"Du har {3 - i} försök kvar");
-                }
-            }
-
-        }
-
         private static void SetUp()
         {
             BaseGroup basGrupp3 = new BaseGroup("coffeencode", 10);
-            basGrupp3.Password = basGrupp3.Name;
+            basGrupp3.Password = basGrupp3.Name;//Satt gruppens namn som lösenord.
             RegBaseGroupMembers(basGrupp3);
-            SecurityCheck(basGrupp3.Password);
+            bool granted = Security.SecurityCheck(basGrupp3.Password);
+            if (granted)
+            {
+                Menu();
+            }
+            else
+            {
+                Console.WriteLine("Tyvärr, member only!");
+            }
         }
 
         static void RegBaseGroupMembers(BaseGroup b)
