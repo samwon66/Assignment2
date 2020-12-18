@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Assignment2.Apprentice
 {
-    class BaseGroupMember : Student
+    class BGMember : Student
     {
         private string callName;
         private string motivProg;
 
-        public BaseGroupMember() { }
+        public BGMember() { }
 
-        public BaseGroupMember(string callName, string firstName, string lastName, string city, string age, string accomodation, string family, string pet, string prevProfession, string hobby, string favFood, string favMusic, string motivProg)
+        public BGMember(string callName, string firstName, string lastName, string city, string age, string accomodation, string family, string pet, string prevProfession, string hobby, string favFood, string favMusic, string motivProg)
         {
             this.CallName = callName;
             this.MotivProg = motivProg;
@@ -43,7 +43,6 @@ namespace Assignment2.Apprentice
                    $"Favorit mat: {FavFood}\n" +
                    $"Favorit musik: {FavMusic}\n" +
                    $"Driv till programmering: {MotivProg}";
-
         }
 
         
