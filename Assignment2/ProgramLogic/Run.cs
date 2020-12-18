@@ -50,6 +50,7 @@ namespace Assignment2.ProgramLogic
                         Console.Write("\n Ditt val är: ");
                         nr = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine(listOfMembers[nr - 1].Describe());
+                        Console.WriteLine("");
                         break;
                     case 3:
                         bool loop = true;
@@ -126,7 +127,6 @@ namespace Assignment2.ProgramLogic
             BaseGroup basGrupp3 = new BaseGroup("coffeencode");
             basGrupp3.ListOfMembers = new List<BGMember>();
             basGrupp3.AmountOfMembers = basGrupp3.ListOfMembers.Count;
-            basGrupp3.Password = basGrupp3.Name;//Satt gruppens namn som lösenord.
             RegBaseGroupMembers(basGrupp3, basGrupp3.ListOfMembers);
             bool granted = Security.SecurityCheck(basGrupp3.Password, basGrupp3);
             if (granted)

@@ -28,7 +28,6 @@ namespace Assignment2.Apprentice
             this.FavMusic = favMusic;
         }
 
-
         public string Describe()
         {
             return $"Förnamn: {FirstName}\n" +
@@ -45,9 +44,6 @@ namespace Assignment2.Apprentice
                    $"Driv till programmering: {MotivProg}";
         }
 
-        
-       
-
         public override string ToString()
         {
             return $"{CallName}";
@@ -55,7 +51,6 @@ namespace Assignment2.Apprentice
 
         public string CallName { get => callName; set => callName = value; }
         public string MotivProg { get => motivProg; set => motivProg = value; }
-
         
     }
 }

@@ -12,7 +12,7 @@ namespace Assignment2.ProgramLogic
         public static bool SecurityCheck(string password, BaseGroup basegroup)
         {
             Console.Title = $"{basegroup} inloggning";
-
+            //En for-loop för att hålla koll på hur många försök användaren har haft
             for (int i = 1; i < 4; i++)
             {
                 Console.WriteLine($"\n Välkommen till {basegroup}:s register");
@@ -26,7 +26,7 @@ namespace Assignment2.ProgramLogic
                 }
                 else
                 {
-                    Console.Beep();
+                    Console.Beep(311, 700);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n Ogiltigt lösenord, var god försöka igen!");
                     Console.WriteLine($"Du har {3 - i} försök kvar");

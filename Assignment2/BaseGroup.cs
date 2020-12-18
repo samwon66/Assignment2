@@ -10,20 +10,18 @@ namespace Assignment2
         private string name;
         private int amountOfMembers;
         private List<BGMember> listOfMembers;
-        private string password;
+        private string password = "coffeencode";
 
         public BaseGroup() { }
 
         public BaseGroup(string name)
         {
             this.name = name;
-            //this.ListOfMembers = listOfMembers;
-            //this.amountOfMembers = amountOfMembers;
         }
 
         public string Name { get => name; set => name = value; }
         public int AmountOfMembers { get => amountOfMembers; set => amountOfMembers = value; }
-        public string Password { get => password; set => password = value; }
+        public string Password { get => password; }
         public List<BGMember> ListOfMembers { get => listOfMembers; set => listOfMembers = value; }
 
         public override string ToString()
