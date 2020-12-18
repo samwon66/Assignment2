@@ -17,16 +17,9 @@ namespace Assignment2
         public BaseGroup(string name)
         {
             this.name = name;
+            //this.ListOfMembers = listOfMembers;
             //this.amountOfMembers = amountOfMembers;
-            //this.listOfMembers = listOfMembers;
         }
-
-        //public BaseGroup(string name, int amountOfMembers)
-        //{
-        //    this.name = name;
-        //    this.amountOfMembers = amountOfMembers;
-        //}
-
 
         public string Name { get => name; set => name = value; }
         public int AmountOfMembers { get => amountOfMembers; set => amountOfMembers = value; }

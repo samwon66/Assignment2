@@ -32,6 +32,7 @@ namespace Assignment2.ProgramLogic
                 Console.WriteLine("*   4. Avsluta                                                   *");
                 Console.WriteLine(" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  ");
 
+                Console.Write("\n Ditt val är: ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 int nr;
                 switch (choice)
@@ -46,6 +47,7 @@ namespace Assignment2.ProgramLogic
                         Console.WriteLine("");
                         ShowAllMembers(listOfMembers);
                         Console.WriteLine("\n Välj en medlem som du vill titta närmare på.");
+                        Console.Write("\n Ditt val är: ");
                         nr = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine(listOfMembers[nr - 1].Describe());
                         break;
@@ -57,14 +59,15 @@ namespace Assignment2.ProgramLogic
                             Console.WriteLine("");
                             ShowAllMembers(listOfMembers);
                             Console.WriteLine("\n Välj en medlem som du vill ta bort från registern.");
+                            Console.Write("\n Ditt val är: ");
                             nr = Convert.ToInt32(Console.ReadLine());
                             try
                             {
-                                Console.WriteLine($" Du vill ta bort {listOfMembers[nr - 1].CallName}? (j/n) ");
+                                Console.Write($" Du vill ta bort {listOfMembers[nr - 1].CallName}? (j/n) ");
                                 char answer = Convert.ToChar(Console.ReadLine());
                                 if (answer == 'j')
                                 {
-                                    Console.WriteLine($" {listOfMembers[nr - 1].CallName} är borttagen");
+                                    Console.WriteLine($"\n {listOfMembers[nr - 1].CallName} är borttagen");
                                     listOfMembers.Remove(listOfMembers[nr - 1]);
                                     loop = false;
                                 }
