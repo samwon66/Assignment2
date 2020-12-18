@@ -49,6 +49,7 @@ namespace Assignment2.ProgramLogic
                         Console.WriteLine("\n Välj en medlem som du vill titta närmare på.");
                         Console.Write("\n Ditt val är: ");
                         nr = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("");
                         Console.WriteLine(listOfMembers[nr - 1].Describe());
                         Console.WriteLine("");
                         break;
